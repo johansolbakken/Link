@@ -12,7 +12,8 @@
 		8D7F98D327A713D200387224 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F98D227A713D200387224 /* Assets.xcassets */; };
 		8D7F98D627A713D200387224 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F98D527A713D200387224 /* Preview Assets.xcassets */; };
 		8D7F98D827A713D200387224 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F98D727A713D200387224 /* Persistence.swift */; };
-		8D7F98DB27A713D200387224 /* Link.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F98D927A713D200387224 /* Link.xcdatamodeld */; };
+		8D7F98EB27A7301200387224 /* Link.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F98E927A7301200387224 /* Link.xcdatamodeld */; };
+		8D7F98F127A742CD00387224 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F98F027A742CD00387224 /* StatusBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +23,9 @@
 		8D7F98D227A713D200387224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D7F98D527A713D200387224 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D7F98D727A713D200387224 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		8D7F98DA27A713D200387224 /* Link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Link.xcdatamodel; sourceTree = "<group>"; };
 		8D7F98DC27A713D200387224 /* Link.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Link.entitlements; sourceTree = "<group>"; };
+		8D7F98EA27A7301200387224 /* Link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Link.xcdatamodel; sourceTree = "<group>"; };
+		8D7F98F027A742CD00387224 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +58,14 @@
 		8D7F98CD27A713D200387224 /* Link */ = {
 			isa = PBXGroup;
 			children = (
+				8D7F98F027A742CD00387224 /* StatusBarController.swift */,
 				8D7F98CE27A713D200387224 /* LinkApp.swift */,
 				8D7F98D027A713D200387224 /* ContentView.swift */,
 				8D7F98D227A713D200387224 /* Assets.xcassets */,
 				8D7F98D727A713D200387224 /* Persistence.swift */,
 				8D7F98DC27A713D200387224 /* Link.entitlements */,
-				8D7F98D927A713D200387224 /* Link.xcdatamodeld */,
 				8D7F98D427A713D200387224 /* Preview Content */,
+				8D7F98E927A7301200387224 /* Link.xcdatamodeld */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -145,10 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7F98EB27A7301200387224 /* Link.xcdatamodeld in Sources */,
+				8D7F98F127A742CD00387224 /* StatusBarController.swift in Sources */,
 				8D7F98D827A713D200387224 /* Persistence.swift in Sources */,
 				8D7F98D127A713D200387224 /* ContentView.swift in Sources */,
 				8D7F98CF27A713D200387224 /* LinkApp.swift in Sources */,
-				8D7F98DB27A713D200387224 /* Link.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,12 +348,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8D7F98D927A713D200387224 /* Link.xcdatamodeld */ = {
+		8D7F98E927A7301200387224 /* Link.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8D7F98DA27A713D200387224 /* Link.xcdatamodel */,
+				8D7F98EA27A7301200387224 /* Link.xcdatamodel */,
 			);
-			currentVersion = 8D7F98DA27A713D200387224 /* Link.xcdatamodel */;
+			currentVersion = 8D7F98EA27A7301200387224 /* Link.xcdatamodel */;
 			path = Link.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

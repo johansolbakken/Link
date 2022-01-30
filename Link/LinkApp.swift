@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct LinkApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @StateObject var persistenceController = PersistenceController();
+    @StateObject var statusBarController = StatusBarController();
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext,
+                              persistenceController.container.viewContext)
+                .environment(\.statusBarController, statusBarController);
         }
     }
 }
