@@ -8,13 +8,13 @@
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    var statusBarController = StatusBarController();
+    private var menubar = Menubar();
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        statusBarController.initialize();
+        menubar.initialize();
         
         if let window = NSApplication.shared.windows.first {
-            statusBarController.setWindow(window: window);
+            menubar.setWindowContext(window: window);
         }
     }
 }
