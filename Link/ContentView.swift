@@ -12,7 +12,6 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc;
     @Environment(\.openURL) var openURL;
-    @Environment(\.statusBarController) var statusBar;
     @FetchRequest(sortDescriptors: []) var links: FetchedResults<Link>;
     
     @State private var showEditor = false;
@@ -20,9 +19,9 @@ struct ContentView: View {
     @State var url:String = "";
     @State var currentLink:Link?;
     
+    
     var body: some View {
         ZStack {
-            if (!statusBar.getHidden()) {
             VStack {
                 // Logo
                 LogoView()
@@ -89,7 +88,6 @@ struct ContentView: View {
             }
             .frame(width: 400)
             .padding();
-            }
         }
     }
 }

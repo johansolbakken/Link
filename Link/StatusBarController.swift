@@ -9,15 +9,14 @@ import Foundation
 import AppKit
 import SwiftUI
 
-class StatusBarController: ObservableObject {
+class StatusBarController {
     private var statusBar: NSStatusBar?;
     private var statusItem: NSStatusItem?;
-    private var hidden = false;
-    private var isInit = false;
+    private var window: NSWindow?;
     
     func initialize() {
         statusBar = NSStatusBar.init();
-        statusItem = statusBar?.statusItem(withLength: 28.0);
+        statusItem = statusBar?.statusItem(withLength: NSStatusItem.variableLength);
         
         if let statusBarButton = statusItem?.button {
             statusBarButton.image = NSImage(systemSymbolName: "link", accessibilityDescription: "");
@@ -29,11 +28,10 @@ class StatusBarController: ObservableObject {
     }
     
     @objc func toggleHidden(sender: AnyObject) {
-        hidden = !hidden;
+        window?.orderFrontRegardless();
     }
     
-    func getHidden() -> Bool {
-        if (!isInit) {initialize();}
-        return hidden;
+    func setWindow(window: NSWindow) {
+        self.window = window;
     }
 }
