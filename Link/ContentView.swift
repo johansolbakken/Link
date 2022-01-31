@@ -11,20 +11,31 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc;
-    @Environment(\.openURL) var openURL;
     @FetchRequest(sortDescriptors: []) var links: FetchedResults<Link>;
     
-    @State private var showEditor = false;
+    @State private var editorShouldShow = false;
     @State var title:String = "";
     @State var url:String = "";
     @State var currentLink:Link?;
     
+    func showEditor(title: String, url: String, link: Link) {
+        editorShouldShow = true;
+        self.title = title;
+        self.url = url;
+        self.currentLink = link;
+    }
+    
+    func hideEditor() {
+        editorShouldShow = false;
+        self.title = "";
+        self.title = "";
+    }
     
     var body: some View {
         ZStack {
             VStack {
                 // Logo
-                LogoView()
+                LogoView();
                 
                 // List of links
                 List(links) {link in
@@ -32,29 +43,28 @@ struct ContentView: View {
                         Text(link.title ?? "Unknown")
                             .font(.title2)
                             .onTapGesture {
-                                let url = URL(string: link.url ?? "");
-                                openURL(url!);
+                                let linkObj = LinkObj();
+                                linkObj.url = link.url ?? "";
+                                LinkHandler.instance.openUrl(link: linkObj);
                             };
                         Spacer();
                         Button {
-                            title = link.title ?? "no title";
-                            url = link.url ?? "no url";
-                            currentLink = link;
-                            showEditor = true;
+                            showEditor(title: link.title ?? "no title", url: link.url ?? "no url", link: link);
                         } label: {
                             Label("Edit", systemImage: "pencil")
                         }
                         Button {
                             moc.delete(link);
                             try? moc.save();
-                            showEditor = false;
+                            hideEditor();
                         } label: {
                             Label("Delete", systemImage: "trash");
                         }
                     }
                 }
                 
-                if (showEditor) {
+                // Editor
+                if (editorShouldShow) {
                     VStack {
                         Text("Edit")
                             .font(.title2);
@@ -66,7 +76,7 @@ struct ContentView: View {
                             currentLink?.setValue($title.wrappedValue, forKey: "title");
                             currentLink?.setValue($url.wrappedValue, forKey: "url");
                             try? moc.save();
-                            showEditor = false;
+                            hideEditor();
                         } label: {
                             Label("Save", systemImage: "square.and.arrow.down");
                         }
@@ -75,13 +85,13 @@ struct ContentView: View {
                     .border(.foreground);
                 }
                 
+                // Add button
                 Button {
                     let link = Link(context: moc);
                     link.title = String("No title");
                     link.url = String("");
                     link.id = UUID();
-                    currentLink = link;
-                    showEditor = true;
+                    showEditor(title: link.title ?? "no title", url: link.url ?? "no url", link: link);
                 } label: {
                     Label("Add", systemImage: "plus.square");
                 }
